@@ -41,7 +41,7 @@ A cluster of FortiADC VMs will have a cross region/parallel SLA of 99,999975% wh
 
 - [__**Active/Passive with external Azure Load Balancer**__](Active-Passive-ELB-ILB): This design will deploy 2 FortiGate VMs in Active/Passive connected using the unicast FGCP HA protocol. The failover of the traffic in this setup is handled by the Microsoft Azure Load Balancer using a health probe towards the FortiGate VMs. THe failover times are based on the health probe of the Microsoft Azure Load Balancer (2 failed attempts per 5 seconds with a max of 15 seconds). The public IPs are configured on the Microsoft Azure Load Balancer and provide ingress and egress flows with inspection from the FortiGate. Microsoft provides some guidance on this architecture [here](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-ha-ports-overview).
 
-![FortiADC in HA pair](/img/azure-fortiadc-ha.png)
+![FortiADC in HA pair](https://github.com/mduijm/fortinet-azure-solutions/blob/main/FortiADC/img/azure-fortiadc-ha.png?raw=true)
 
 
 *By default these building blocks are using Availability Sets. The Availability Zone templates are also available [here](AvailabilityZones/) for a higher SLA.*
