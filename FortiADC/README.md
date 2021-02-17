@@ -6,14 +6,16 @@ FortiADC enhances the scalability, performance, and security of your application
 
 FortiADC provides unmatched application acceleration, load balancing, and web security, regardless of whether it is used for applications within a single data center or serves multiple applications for millions of users around the globe. FortiADC includes application acceleration, WAF, IPS, SSLi, link load balancing, and user authentication in one solution to deliver availability, performance, and security in a single, all-inclusive license.
 
+more information: [FortiADC landing page](https://www.fortinet.com/products/application-delivery-controller/fortiadc#overview)
+
 ## Use cases
 
 The FortiADC can be used in different scenario's to protect assets deployed in Microsoft Azure Virtual Networks.
 
-- Secure hybrid cloud
-- Cloud security services hub
-- Logical (intent-based) segmentation
-- Secure remote access
+- Enterprise-class layer 4-7 ADC
+- Disaster recovery with global server load balancing
+- Secure applications with a full-featured web application firewall
+- DDoS application, web filtering, IPS, Geo-IP and IP reputation for enhanced security
 
 Click [here](https://www.fortinet.com/products/public-cloud-security/azure#usecases) for a general overview of the different public cloud use cases.
 
@@ -21,7 +23,7 @@ Click [here](https://www.fortinet.com/products/public-cloud-security/azure#useca
 
 When designing a reliable architecture in Microsoft Azure it is important to take resiliency and High Availability into account. Microsoft has the [Microsoft Azure Well-Architected Framework](https://docs.microsoft.com/en-us/azure/architecture/framework/resiliency/overview) available.
 
-Running the FortiGate Next-Generation Firewall inside of Microsoft Azure can offer different levels of reliability based on these building blocks
+Running the FortiADC inside of Microsoft Azure can offer different levels of reliability based on these building blocks
 
 ### SLA
 
@@ -30,7 +32,9 @@ Microsoft offers different [SLAs](https://azure.microsoft.com/en-au/support/lega
 - Availability Set (different rack and power): 99,95%
 - Single VM with Premium SSD: 99.9%
 
-A cluster of FortiGate VMs will have a cross region/parallel SLA of 99,999975% when using Availability Sets. A cluster of FortiGate VMs will have a cross region/parallel SLA of 99,999999% when using Availability Zones. More information about the uptime of the Azure datacenter can be found on [this blog post](https://kvaes.wordpress.com/2020/02/16/is-azure-a-tier-3-datacenter-and-what-about-service-levels-in-a-broader-sense/).
+A cluster of FortiADC VMs will have a cross region/parallel SLA of 99,999975% when using Availability Sets. A cluster of FortiADC VMs will have a cross region/parallel SLA of 99,999999% when using Availability Zones. More information about the uptime of the Azure datacenter can be found on [this blog post](https://kvaes.wordpress.com/2020/02/16/is-azure-a-tier-3-datacenter-and-what-about-service-levels-in-a-broader-sense/).
+
+# NEED UPDATE
 
 ### Building blocks
 
