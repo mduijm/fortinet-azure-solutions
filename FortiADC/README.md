@@ -41,17 +41,8 @@ A cluster of FortiADC VMs will have a cross region/parallel SLA of 99,999975% wh
 
 - [__**Active/Passive with external Azure Load Balancer**__](Active-Passive-ELB-ILB): This design will deploy 2 FortiGate VMs in Active/Passive connected using the unicast FGCP HA protocol. The failover of the traffic in this setup is handled by the Microsoft Azure Load Balancer using a health probe towards the FortiGate VMs. THe failover times are based on the health probe of the Microsoft Azure Load Balancer (2 failed attempts per 5 seconds with a max of 15 seconds). The public IPs are configured on the Microsoft Azure Load Balancer and provide ingress and egress flows with inspection from the FortiGate. Microsoft provides some guidance on this architecture [here](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-ha-ports-overview).
 
-![FortiADC in HA pair](img/azure-fortiadc-ha.png)
+![FortiADC in HA pair](/img/azure-fortiadc-ha.png)
 
-
-
-- [__**Active/Active with external and internal Azure Load Balancer**__](Active-Active-ELB-ILB): This design will deploy 2 FortiGate VMs in Active/Active as 2 independent systems. The failover of the traffic in this setup is handled by the Microsoft Azure Load Balancer using a health probe towards the FortiGate VMs. The public IPs are configured on the Microsoft Azure Load Balancer and provide ingress and egress flows with inspection from the FortiGate. To sync the configuration of this setup a FortiManager or local replication can be used. Microsoft provides some guidance on this architecture [here](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-ha-ports-overview).
-
-More information can be found [here](Active-Active-ELB-ILB/)
-
-<p align="center">
-  <a href="Active-Active-ELB-ILB/"><img width="500px" src="Active-Active-ELB-ILB/images/fgt-aa.png" alt="FortiGate building blocks"></a>
-</p
 
 *By default these building blocks are using Availability Sets. The Availability Zone templates are also available [here](AvailabilityZones/) for a higher SLA.*
 
@@ -64,11 +55,6 @@ The FortiGate Next-Generation Firewall can be deployed in Microsoft Azure in dif
 - [__**Autoscaling**__](Autoscale/): For application that are fluid in the amount of resources the FortiGate can also be deployed with a autoscaling architecture. This architecture is documented [here](https://docs.fortinet.com/vm/azure/fortigate/6.4/azure-cookbook/6.4.0/161167/deploying-auto-scaling-on-azure) or a quickstart script is available [here](Autoscale/)
 - [__**Azure Virtual WAN**__](AzureVirtualWAN/): Azure Virtual WAN offers a central connectivity point between regions, on-premise. Fortinet offers [automation](https://www.fortinet.com/content/dam/fortinet/assets/deployment-guides/dg-fortigate-azure-wan-integration.pdf) as well as [different deployment modes](AzureVirtualWAN/).
 - [__**SD-WAN Connectivity**__](SD-WAN/): Connecting the on-premise environment with your Microsoft Azure environment.
-
-Coming soon...
-
-- __**Multi region - Azure Traffic Manager**__
-- __**Azure Application Gateway**__
 
 ## Support
 Fortinet-provided scripts in this and other GitHub projects do not fall under the regular Fortinet technical support scope and are not supported by FortiCare Support Services.
