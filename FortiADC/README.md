@@ -6,8 +6,6 @@ FortiADC enhances the scalability, performance, and security of your application
 
 FortiADC provides unmatched application acceleration, load balancing, and web security, regardless of whether it is used for applications within a single data center or serves multiple applications for millions of users around the globe. FortiADC includes application acceleration, WAF, IPS, SSLi, link load balancing, and user authentication in one solution to deliver availability, performance, and security in a single, all-inclusive license.
 
-
-
 more information: [FortiADC landing page](https://www.fortinet.com/products/application-delivery-controller/fortiadc#overview)
 
 ## Use cases
