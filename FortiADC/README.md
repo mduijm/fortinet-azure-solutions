@@ -34,8 +34,6 @@ Microsoft offers different [SLAs](https://azure.microsoft.com/en-au/support/lega
 
 A cluster of FortiADC VMs will have a cross region/parallel SLA of 99,999975% when using Availability Sets. A cluster of FortiADC VMs will have a cross region/parallel SLA of 99,999999% when using Availability Zones. More information about the uptime of the Azure datacenter can be found on [this blog post](https://kvaes.wordpress.com/2020/02/16/is-azure-a-tier-3-datacenter-and-what-about-service-levels-in-a-broader-sense/).
 
-# NEED UPDATE
-
 ### Building blocks
 
 
@@ -44,6 +42,7 @@ A cluster of FortiADC VMs will have a cross region/parallel SLA of 99,999975% wh
 <p align="center">
   <a href="TEST/"><img width="auto" src="ha-lb-azure/images/azure-fortiadc-ha.png" alt="FortiADC building blocks"></a>
 </p
+
 
 ## Support
 Fortinet-provided scripts in this and other GitHub projects do not fall under the regular Fortinet technical support scope and are not supported by FortiCare Support Services.
