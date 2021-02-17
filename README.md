@@ -5,6 +5,7 @@ Fortinet offers different products running on Microsoft Azure.
 - [FortiGate](FortiGate/)
 - [FortiManager](FortiManager/)
 - [FortiAnalyzer](FortiAnalyzer/)
+- [FortiADC](FortiADC/)
 - [FortiWeb](https://github.com/fortinet/azure-templates/tree/main/FortiWeb/FortiWeb-HA)
 
 # License
