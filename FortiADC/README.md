@@ -41,7 +41,7 @@ A cluster of FortiADC VMs will have a cross region/parallel SLA of 99,999975% wh
 
 <p align="center">
   <a href="TEST/"><img width="auto" src="ha-lb-azure/images/azure-fortiadc-ha.png" alt="FortiADC building blocks"></a>
-</p
+</p>
 
 
 ## Support
