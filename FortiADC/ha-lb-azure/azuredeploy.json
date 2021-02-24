@@ -43,7 +43,7 @@
         "latest"
       ],
       "metadata": {
-        "description": "*****"
+        "description": "Select the image version"
       }
     },
     "instanceType": {
@@ -76,6 +76,17 @@
         "description": "Whether to use a public IP and if so whether it is new"
       }
     },
+    "publicIP3NewOrExisting": {
+      "type": "string",
+      "defaultValue": "new",
+      "allowedValues": [
+        "new",
+        "existing"
+      ],
+      "metadata": {
+        "description": "Whether to use a public IP and if so whether it is new"
+      }
+    },
     "publicIPName": {
       "type": "string",
       "defaultValue": "FADAClusterPublicIP",
@@ -98,6 +109,20 @@
       }
     },
     "publicIP2ResourceGroup": {
+      "type": "string",
+      "defaultValue": "",
+      "metadata": {
+        "description": "Resource group to which the Public IP belongs."
+      }
+    },
+    "publicIP3Name": {
+      "type": "string",
+      "defaultValue": "FADCMgmtPublicIP",
+      "metadata": {
+        "description": "Name of Public IP address element."
+      }
+    },
+    "publicIP3ResourceGroup": {
       "type": "string",
       "defaultValue": "",
       "metadata": {
@@ -175,20 +200,6 @@
         "description": "Subnet 2 Prefix"
       }
     },
-    "subnet3Name": {
-      "type": "string",
-      "defaultValue": "ProtectedSubnet",
-      "metadata": {
-        "description": "Subnet 3 Name"
-      }
-    },
-    "subnet3Prefix": {
-      "type": "string",
-      "defaultValue": "172.16.137.0/24",
-      "metadata": {
-        "description": "Subnet 3 Prefix"
-      }
-    },
     "location": {
       "type": "string",
       "defaultValue": "[resourceGroup().location]",
@@ -207,7 +218,7 @@
   },
   "variables": {
     "imagePublisher": "fortinet",
-    "imageOffer": "fortinet_fortiadc-vm_v5",
+    "imageOffer": "fortinet-fortiadc",
     "AvailabilitySetName": "[concat(parameters('fortiADCNamePrefix'),'-AvailabilitySet')]",
     "AvailabilitySetId": "[resourceId('Microsoft.Compute/availabilitySets', variables('AvailabilitySetName'))]",
 
@@ -216,8 +227,6 @@
     "subnet2Id": "[if(equals(parameters('vnetNewOrExisting'),'new'),resourceId('Microsoft.Network/virtualNetworks/subnets', variables('vnetName'),parameters('subnet2Name')),resourceId(parameters('vnetResourceGroup'),'Microsoft.Network/virtualNetworks/subnets', variables('vnetName'),parameters('subnet2Name')))]",
     "fadaVmName": "[concat(parameters('fortiADCNamePrefix'),'-FAD-A')]",
     "fadbVmName": "[concat(parameters('fortiADCNamePrefix'),'-FAD-B')]",
-    "routeTable3Name": "[concat(parameters('fortiADCNamePrefix'),'-',parameters('subnet3Name'),'-','RouteTable')]",
-    "routeTable3Id": "[resourceId('Microsoft.Network/routeTables',variables('routeTable3Name'))]",
     "routeTableName": "FADDefaultAPRouteTable",
     "routeTableId": "[resourceId('Microsoft.Network/routeTables',variables('routeTableName'))]",
 
@@ -238,9 +247,9 @@
     "fadbNic4Name": "[concat(variables('fadbVmName'),'-Nic4')]",
     "fadbNic4Id": "[resourceId('Microsoft.Network/networkInterfaces',variables('fadbNic4Name'))]",
 
-    "publicIPName": "[if(equals(parameters('publicIPName'),''),concat(parameters('fortiADCNamePrefix'),'-FGT-PIP'),parameters('publicIPName'))]",
+    "publicIPName": "[if(equals(parameters('publicIPName'),''),concat(parameters('fortiADCNamePrefix'),'-FAD-PIP'),parameters('publicIPName'))]",
     "publicIPId": "[if(equals(parameters('publicIPNewOrExisting'),'new'),resourceId('Microsoft.Network/publicIPAddresses',variables('publicIPName')),resourceId(parameters('publicIPResourceGroup'),'Microsoft.Network/publicIPAddresses',variables('publicIPName')))]",
-    "publicIP2Name": "[if(equals(parameters('publicIP2Name'),''),concat(parameters('fortiADCNamePrefix'),'-FGT-A-MGMT-PIP'),parameters('publicIP2Name'))]",
+    "publicIP2Name": "[if(equals(parameters('publicIP2Name'),''),concat(parameters('fortiADCNamePrefix'),'-FAD-A-MGMT-PIP'),parameters('publicIP2Name'))]",
     "publicIP2Id": "[if(equals(parameters('publicIP2NewOrExisting'),'new'),resourceId('Microsoft.Network/publicIPAddresses',variables('publicIP2Name')),resourceId(parameters('publicIP2ResourceGroup'),'Microsoft.Network/publicIPAddresses',variables('publicIP2Name')))]",
     "NSGName": "[concat(parameters('fortiADCNamePrefix'),'-',uniqueString(resourceGroup().id),'-NSG')]",
     "NSGId": "[resourceID('Microsoft.Network/networkSecurityGroups/',variables('NSGName'))]",
@@ -324,7 +333,7 @@
       "name": "[variables('vnetName')]",
       "location": "[parameters('location')]",
       "dependsOn": [
-        "[variables('routeTable3Id')]"
+        "[variables('routeTableId')]"
       ],
       "properties": {
         "addressSpace": {
@@ -344,15 +353,6 @@
             "properties": {
               "addressPrefix": "[parameters('subnet2Prefix')]"
             }
-          },
-          {
-            "name": "[parameters('subnet3Name')]",
-            "properties": {
-              "addressPrefix": "[parameters('subnet3Prefix')]",
-              "routeTable": {
-                "id": "[variables('routeTable3Id')]"
-              }
-            }
           }
         ]
       }
@@ -360,7 +360,7 @@
 {
       "apiVersion": "2020-04-01",
       "type": "Microsoft.Network/routeTables",
-      "name": "[variables('routeTable3Name')]",
+      "name": "[variables('routeTableName')]",
       "location": "[parameters('location')]",
       "tags": {
        "provider": "[toUpper(parameters('fortinetTags').provider)]"
