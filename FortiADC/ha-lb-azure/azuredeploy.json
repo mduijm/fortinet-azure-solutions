@@ -48,8 +48,8 @@
     },
     "instanceType": {
       "type": "string",
-      "defaultValue": "Standard_F2s",
-      "allowedValues": [ "Standard_F2s", "Standard_F8s", "Standard_F16s", "Standard_F4", "Standard_F8", "Standard_F16", "Standard_F8s_v2", "Standard_F16s_v2", "Standard_F32s_v2", "Standard_DS3_v2", "Standard_DS4_v2", "Standard_DS5_v2", "Standard_D8s_v3", "Standard_D16s_v3", "Standard_D32s_v3"],
+      "defaultValue": "Standard_F4s",
+      "allowedValues": [ "Standard_F2s", "Standard_F8s", "Standard_F16s", "Standard_F4s", "Standard_F8", "Standard_F16", "Standard_F8s_v2", "Standard_F16s_v2", "Standard_F32s_v2", "Standard_DS3_v2", "Standard_DS4_v2", "Standard_DS5_v2", "Standard_D8s_v3", "Standard_D16s_v3", "Standard_D32s_v3"],
       "metadata": {
         "description": "Virtual Machine size selection - must be F4 or other instance that supports 4 NICs"
       }
@@ -65,28 +65,6 @@
         "description": "Identify if to use a public IP, and if so whether it's new"
       }
     },
-    "publicIP2NewOrExisting": {
-      "type": "string",
-      "defaultValue": "new",
-      "allowedValues": [
-        "new",
-        "existing"
-      ],
-      "metadata": {
-        "description": "Whether to use a public IP and if so whether it is new"
-      }
-    },
-    "publicIP3NewOrExisting": {
-      "type": "string",
-      "defaultValue": "new",
-      "allowedValues": [
-        "new",
-        "existing"
-      ],
-      "metadata": {
-        "description": "Whether to use a public IP and if so whether it is new"
-      }
-    },
     "publicIPName": {
       "type": "string",
       "defaultValue": "FADAClusterPublicIP",
@@ -95,34 +73,6 @@
       }
     },
     "publicIPResourceGroup": {
-      "type": "string",
-      "defaultValue": "",
-      "metadata": {
-        "description": "Resource group to which the Public IP belongs."
-      }
-    },
-    "publicIP2Name": {
-      "type": "string",
-      "defaultValue": "FADAMgmtPublicIP",
-      "metadata": {
-        "description": "Name of Public IP address element."
-      }
-    },
-    "publicIP2ResourceGroup": {
-      "type": "string",
-      "defaultValue": "",
-      "metadata": {
-        "description": "Resource group to which the Public IP belongs."
-      }
-    },
-    "publicIP3Name": {
-      "type": "string",
-      "defaultValue": "FADCMgmtPublicIP",
-      "metadata": {
-        "description": "Name of Public IP address element."
-      }
-    },
-    "publicIP3ResourceGroup": {
       "type": "string",
       "defaultValue": "",
       "metadata": {
@@ -227,9 +177,6 @@
     "subnet2Id": "[if(equals(parameters('vnetNewOrExisting'),'new'),resourceId('Microsoft.Network/virtualNetworks/subnets', variables('vnetName'),parameters('subnet2Name')),resourceId(parameters('vnetResourceGroup'),'Microsoft.Network/virtualNetworks/subnets', variables('vnetName'),parameters('subnet2Name')))]",
     "fadaVmName": "[concat(parameters('fortiADCNamePrefix'),'-FAD-A')]",
     "fadbVmName": "[concat(parameters('fortiADCNamePrefix'),'-FAD-B')]",
-    "routeTableName": "FADDefaultAPRouteTable",
-    "routeTableId": "[resourceId('Microsoft.Network/routeTables',variables('routeTableName'))]",
-
     "fadaNic1Name": "[concat(variables('fadaVmName'),'-Nic1')]",
     "fadaNic1Id": "[resourceId('Microsoft.Network/networkInterfaces',variables('fadaNic1Name'))]",
     "fadaNic2Name": "[concat(variables('fadaVmName'),'-Nic2')]",
@@ -238,46 +185,26 @@
     "fadbNic1Id": "[resourceId('Microsoft.Network/networkInterfaces',variables('fadbNic1Name'))]",
     "fadbNic2Name": "[concat(variables('fadbVmName'),'-Nic2')]",
     "fadbNic2Id": "[resourceId('Microsoft.Network/networkInterfaces',variables('fadbNic2Name'))]",
-    "fadaNic3Name": "[concat(variables('fadaVmName'),'-Nic3')]",
-    "fadaNic3Id": "[resourceId('Microsoft.Network/networkInterfaces',variables('fadaNic3Name'))]",
-    "fadbNic3Name": "[concat(variables('fadbVmName'),'-Nic3')]",
-    "fadbNic3Id": "[resourceId('Microsoft.Network/networkInterfaces',variables('fadbNic3Name'))]",
-    "fadaNic4Name": "[concat(variables('fadaVmName'),'-Nic4')]",
-    "fadaNic4Id": "[resourceId('Microsoft.Network/networkInterfaces',variables('fadaNic4Name'))]",
-    "fadbNic4Name": "[concat(variables('fadbVmName'),'-Nic4')]",
-    "fadbNic4Id": "[resourceId('Microsoft.Network/networkInterfaces',variables('fadbNic4Name'))]",
-
     "publicIPName": "[if(equals(parameters('publicIPName'),''),concat(parameters('fortiADCNamePrefix'),'-FAD-PIP'),parameters('publicIPName'))]",
     "publicIPId": "[if(equals(parameters('publicIPNewOrExisting'),'new'),resourceId('Microsoft.Network/publicIPAddresses',variables('publicIPName')),resourceId(parameters('publicIPResourceGroup'),'Microsoft.Network/publicIPAddresses',variables('publicIPName')))]",
-    "publicIP2Name": "[if(equals(parameters('publicIP2Name'),''),concat(parameters('fortiADCNamePrefix'),'-FAD-A-MGMT-PIP'),parameters('publicIP2Name'))]",
-    "publicIP2Id": "[if(equals(parameters('publicIP2NewOrExisting'),'new'),resourceId('Microsoft.Network/publicIPAddresses',variables('publicIP2Name')),resourceId(parameters('publicIP2ResourceGroup'),'Microsoft.Network/publicIPAddresses',variables('publicIP2Name')))]",
     "NSGName": "[concat(parameters('fortiADCNamePrefix'),'-',uniqueString(resourceGroup().id),'-NSG')]",
     "NSGId": "[resourceID('Microsoft.Network/networkSecurityGroups/',variables('NSGName'))]",
     "sn1IPArray": "[split(parameters('subnet1Prefix'),'.')]",
     "sn1IPArray2ndString": "[string(variables('sn1IPArray')[3])]",
     "sn1IPArray2nd": "[split(variables('sn1IPArray2ndString'),'/')]",
-    "sn1CIDRmask": "[string(int(variables('sn1IPArray2nd')[1]))]",
-    "sn1IPArray3": "[string(add(int(variables('sn1IPArray2nd')[0]),1))]",
     "sn1IPArray2": "[string(int(variables('sn1IPArray')[2]))]",
     "sn1IPArray1": "[string(int(variables('sn1IPArray')[1]))]",
     "sn1IPArray0": "[string(int(variables('sn1IPArray')[0]))]",
-    "sn1GatewayIP": "[concat(variables('sn1IPArray0'),'.',variables('sn1IPArray1'),'.',variables('sn1IPArray2'),'.',variables('sn1IPArray3'))]",
     "sn1IPfada": "[concat(variables('sn1IPArray0'),'.',variables('sn1IPArray1'),'.',variables('sn1IPArray2'),'.',add(int(variables('sn1IPArray2nd')[0]),5))]",
     "sn1IPfadb": "[concat(variables('sn1IPArray0'),'.',variables('sn1IPArray1'),'.',variables('sn1IPArray2'),'.',add(int(variables('sn1IPArray2nd')[0]),6))]",
-
     "sn2IPArray": "[split(parameters('subnet2Prefix'),'.')]",
     "sn2IPArray2ndString": "[string(variables('sn2IPArray')[3])]",
     "sn2IPArray2nd": "[split(variables('sn2IPArray2ndString'),'/')]",
-    "sn2CIDRmask": "[string(int(variables('sn2IPArray2nd')[1]))]",
-    "sn2IPArray3": "[string(add(int(variables('sn2IPArray2nd')[0]),1))]",
     "sn2IPArray2": "[string(int(variables('sn2IPArray')[2]))]",
     "sn2IPArray1": "[string(int(variables('sn2IPArray')[1]))]",
     "sn2IPArray0": "[string(int(variables('sn2IPArray')[0]))]",
-    "sn2GatewayIP": "[concat(variables('sn2IPArray0'),'.',variables('sn2IPArray1'),'.',variables('sn2IPArray2'),'.',variables('sn2IPArray3'))]",
-    "sn2IPlb": "[concat(variables('sn2IPArray0'),'.',variables('sn2IPArray1'),'.',variables('sn2IPArray2'),'.',add(int(variables('sn2IPArray2nd')[0]),4))]",
     "sn2IPfada": "[concat(variables('sn2IPArray0'),'.',variables('sn2IPArray1'),'.',variables('sn2IPArray2'),'.',add(int(variables('sn2IPArray2nd')[0]),5))]",
     "sn2IPfadb": "[concat(variables('sn2IPArray0'),'.',variables('sn2IPArray1'),'.',variables('sn2IPArray2'),'.',add(int(variables('sn2IPArray2nd')[0]),6))]",
-
     "externalLBName_NatRule_FGAdminPerm_fada": "[concat(variables('fadaVmName'),'FGAdminPerm')]",
     "externalLBId_NatRule_FGAdminPerm_fada": "[resourceId('Microsoft.Network/loadBalancers/inboundNatRules',variables('externalLBName'),variables('externalLBName_NatRule_FGAdminPerm_fada'))]",
     "externalLBName_NatRule_SSH_fada": "[concat(variables('fadaVmName'),'SSH')]",
@@ -332,9 +259,6 @@
       "apiVersion": "2020-04-01",
       "name": "[variables('vnetName')]",
       "location": "[parameters('location')]",
-      "dependsOn": [
-        "[variables('routeTableId')]"
-      ],
       "properties": {
         "addressSpace": {
           "addressPrefixes": [
@@ -359,28 +283,6 @@
     },
 {
       "apiVersion": "2020-04-01",
-      "type": "Microsoft.Network/routeTables",
-      "name": "[variables('routeTableName')]",
-      "location": "[parameters('location')]",
-      "tags": {
-       "provider": "[toUpper(parameters('fortinetTags').provider)]"
-      },
-      "properties": {
-        "routes": [
-          {
-            "name": "toDefault",
-            "properties": {
-              "addressPrefix": "0.0.0.0/0",
-              "nextHopType": "VirtualAppliance",
-              "nextHopIPAddress": "[variables('sn2IPlb')]"
-            }
-          }
-        ]
-      }
-    },
-
-{
-      "apiVersion": "2020-04-01",
       "name": "[variables('nsgName')]",
       "type": "Microsoft.Network/networkSecurityGroups",
       "location": "[parameters('location')]",
@@ -390,16 +292,86 @@
       "properties": {
         "securityRules": [
           {
-            "name": "AllowAllInbound",
+            "name": "AllowHTTPInbound",
             "properties": {
-              "description": "Allow all in",
+              "description": "Allow http in",
               "protocol": "*",
               "sourcePortRange": "*",
-              "destinationPortRange": "*",
+              "destinationPortRange": "80",
               "sourceAddressPrefix": "*",
               "destinationAddressPrefix": "*",
               "access": "Allow",
               "priority": 100,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "AllowHTTPSInbound",
+            "properties": {
+              "description": "Allow https in",
+              "protocol": "*",
+              "sourcePortRange": "*",
+              "destinationPortRange": "443",
+              "sourceAddressPrefix": "*",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 200,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "AllowSSHInboundMgtA",
+            "properties": {
+              "description": "Allow SSH Mgt to ADC A in",
+              "protocol": "*",
+              "sourcePortRange": "*",
+              "destinationPortRange": "50030",
+              "sourceAddressPrefix": "*",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 300,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "AllowHTTPSInboundMgtA",
+            "properties": {
+              "description": "Allow HTTPS Mgt to ADC A in",
+              "protocol": "*",
+              "sourcePortRange": "*",
+              "destinationPortRange": "40030",
+              "sourceAddressPrefix": "*",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 400,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "AllowSSHInboundMgtB",
+            "properties": {
+              "description": "Allow SSH Mgt to ADC B in",
+              "protocol": "*",
+              "sourcePortRange": "*",
+              "destinationPortRange": "50031",
+              "sourceAddressPrefix": "*",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 500,
+              "direction": "Inbound"
+            }
+          },
+          {
+            "name": "AllowHTTPSInboundMgtB",
+            "properties": {
+              "description": "Allow HTTPS Mgt to ADC B in",
+              "protocol": "*",
+              "sourcePortRange": "*",
+              "destinationPortRange": "40031",
+              "sourceAddressPrefix": "*",
+              "destinationAddressPrefix": "*",
+              "access": "Allow",
+              "priority": 600,
               "direction": "Inbound"
             }
           },
@@ -413,7 +385,7 @@
               "sourceAddressPrefix": "*",
               "destinationAddressPrefix": "*",
               "access": "Allow",
-              "priority": 105,
+              "priority": 100,
               "direction": "Outbound"
             }
           }
