@@ -1,4 +1,4 @@
-# FortiADC HA with Microsoft Standard Loadbalancer
+# FortiADC Cluster (2 units) with Microsoft Standard Loadbalancer
 
 
 
@@ -8,6 +8,13 @@
 More and more enterprises are turning to Microsoft Azure to extend or replace internal data centers and take advantage of the elasticity of the public cloud. While Azure secures the infrastructure, you are responsible for protecting the resources you put in it. As workloads are being moved from local data centers connectivity and security are key elements to take into account. The FortiADC family of application delivery controllers (ADC) optimizes the availability, user experience, performance and scalability of enterprise application delivery.
 
 An ADC is like an advanced server load balancer. An ADC routes traffic to available destination servers based on health checks and load-balancing algorithms; full-featured ADC like FortiADC also improve application performance by assuming some of the server task load. Server tasks that can be handled by the FortiADC appliance include SSL encryption/decryption, WAF protection, Gzip compression, and routing processes, such as NAT.
+
+FortiADC complements Microsoft Loadbalancer with the above mentioned features in an easy to use and easy to manage environment. FortiADC also connects to other Fortinet services like:
+FortiGSLB (useful if you want to deploy a global deployment of FortiADC or want to combine on-premise and cloud based FortiADC units).
+Fortigate
+FortiAnalyzer
+
+FortiADC further also offers features for Kubernetes, more information is currently available through the Fortinet sales channels. 
 
 ### Features
 
@@ -28,11 +35,13 @@ When deployed you can publish your web application through the Microsoft Loadbal
 This Azure ARM template will automatically deploy a full working environment containing the the following components:
 
 * One external Microsoft Standard Loadbalancer for communication with Internet
-* Single Public IP
+* Single Public IP used for application delivery and management (through NAT policies)
 * Two FortiADC appliances (model can be selected during deployment)
 * Network Security group allowing traffic towards the FortiADC on the following ports: 22, 80 and 443
 * 1 VNET with 2 protected subnets
-* 
+
+This ARM template can also be used to extend or customized based on your requirements. Fortinet is also offering other templates that might be of better fit to your organisation.
+
 
 ## Deployment
 
