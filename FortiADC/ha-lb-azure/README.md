@@ -5,7 +5,19 @@
 
 ## Introduction
 
-add intro
+More and more enterprises are turning to Microsoft Azure to extend or replace internal data centers and take advantage of the elasticity of the public cloud. While Azure secures the infrastructure, you are responsible for protecting the resources you put in it. As workloads are being moved from local data centers connectivity and security are key elements to take into account. The FortiADC family of application delivery controllers (ADC) optimizes the availability, user experience, performance and scalability of enterprise application delivery.
+
+An ADC is like an advanced server load balancer. An ADC routes traffic to available destination servers based on health checks and load-balancing algorithms; full-featured ADC like FortiADC also improve application performance by assuming some of the server task load. Server tasks that can be handled by the FortiADC appliance include SSL encryption/decryption, WAF protection, Gzip compression, and routing processes, such as NAT.
+
+Features
+
+FortiADC uses Layer 4 and Layer 7 session information to enable an ADC policy and management framework for:
+
+Server load balancing
+Link load balancing
+Global load balancing
+Security
+The FortiADC D-series family includes physical appliances and virtual appliances. 
 
 ## Design
 
