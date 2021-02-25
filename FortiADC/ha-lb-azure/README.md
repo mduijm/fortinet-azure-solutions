@@ -10,9 +10,10 @@ More and more enterprises are turning to Microsoft Azure to extend or replace in
 An ADC is like an advanced server load balancer. An ADC routes traffic to available destination servers based on health checks and load-balancing algorithms; full-featured ADC like FortiADC also improve application performance by assuming some of the server task load. Server tasks that can be handled by the FortiADC appliance include SSL encryption/decryption, WAF protection, Gzip compression, and routing processes, such as NAT.
 
 FortiADC complements Microsoft Loadbalancer with the above mentioned features in an easy to use and easy to manage environment. FortiADC also connects to other Fortinet services like:
-FortiGSLB (useful if you want to deploy a global deployment of FortiADC or want to combine on-premise and cloud based FortiADC units).
-Fortigate
-FortiAnalyzer
+
+* FortiGSLB (useful if you want to deploy a global deployment of FortiADC or want to combine on-premise and cloud based FortiADC units).
+* Fortigate
+* FortiAnalyzer
 
 FortiADC further also offers features for Kubernetes, more information is currently available through the Fortinet sales channels. 
 
