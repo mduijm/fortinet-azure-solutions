@@ -21,7 +21,18 @@ The FortiADC D-series family includes physical appliances and virtual appliances
 
 ## Design
 
-add design
+In Microsoft Azure, you can deploy a pair of FortiADC appliances in multiple modes. The design in this chapter is a pair of FortiADC appliances across an Availability Set. This allows an SLA of 99,95% based on Microsoft calculation. 
+
+When deployed you can publish your web application through the Microsoft Loadbalancer towards the cluster of FortiADC appliances. The Microsoft loadbalancer will take care of the traffic load between the cluster of FortiADC appliances. FortiADC will then inspect and route traffic to one or more backend servers (not part of the template). 
+
+This Azure ARM template will automatically deploy a full working environment containing the the following components:
+
+* One external Microsoft Standard Loadbalancer for communication with Internet
+* Single Public IP
+* Two FortiADC appliances (model can be selected during deployment)
+* Network Security group allowing traffic towards the FortiADC on the following ports: 22, 80 and 443
+* 1 VNET with 2 protected subnets
+* 
 
 ## Deployment
 
