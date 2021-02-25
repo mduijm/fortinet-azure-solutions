@@ -9,7 +9,7 @@ More and more enterprises are turning to Microsoft Azure to extend or replace in
 
 An ADC is like an advanced server load balancer. An ADC routes traffic to available destination servers based on health checks and load-balancing algorithms; full-featured ADC like FortiADC also improve application performance by assuming some of the server task load. Server tasks that can be handled by the FortiADC appliance include SSL encryption/decryption, WAF protection, Gzip compression, and routing processes, such as NAT.
 
-Features
+### Features
 
 FortiADC uses Layer 4 and Layer 7 session information to enable an ADC policy and management framework for:
 
