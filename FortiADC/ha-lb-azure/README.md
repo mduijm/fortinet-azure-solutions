@@ -1,36 +1,19 @@
-# FortiADC Next-Generation Firewall - A Single VM
+# FortiADC HA with Microsoft Standard Loadbalancer
 
-<-! [![Build Status](https://dev.azure.com/jvh-2520/Fortinet-Azure/_apis/build/status/A-FortiGate-Single-VM?branchName=main)](https://dev.azure.com/jvh-2520/Fortinet-Azure/_build/latest?definitionId=32&branchName=main) >
+
 
 
 ## Introduction
 
-More and more enterprises are turning to Microsoft Azure to extend or replace internal data centers and take advantage of the elasticity of the public cloud. While Azure secures the infrastructure, you are responsible for protecting the resources you put in it. As workloads are being moved from local data centers connectivity and security are key elements to take into account. FortiGate-VM offers a consistent security posture and protects connectivity across public and private clouds, while high-speed VPN connections protect data.
-
-This ARM template deploys a single FortiGate Next-Generation Firewall accompanied by the required infrastructure. Additionally, Fortinet Fabric Connectors deliver the ability to create dynamic security policies.
+add intro
 
 ## Design
 
-In Microsoft Azure, this single FortiGate-VM setup a basic setup to start exploring the capabilities of the next generation firewall. The central system will receive, using user-defined routing (UDR), all or specific traffic that needs inspection going to/coming from on-prem networks or the public internet.
-
-This Azure ARM template will automatically deploy a full working environment containing the following components.
-
-- 1 FortiGate firewalls in an active/passive deployment
-- 1 VNETs containing a protected subnet
-- User Defined Routes (UDR) for the protected subnets
-
-![FortiGate-VM azure design](images/fgt-single-vm.png)
-
-This Azure ARM template can also be extended or customized based on your requirements. Additional subnets besides the ones mentioned above are not automatically generated. By extending the Azure ARM templates additional subnets can be added. Additional subnets will require their own routing tables.
+add design
 
 ## Deployment
 
-For the deployment, you can use the Azure Portal, Azure CLI, Powershell or Azure Cloud Shell. The Azure ARM templates are exclusive to Microsoft Azure and can't be used in other cloud environments. The main template is the `azuredeploy.json` which you can use in the Azure Portal. A `deploy.sh` script is provided to facilitate the deployment. You'll be prompted to provide the 4 required variables:
-
-- PREFIX : This prefix will be added to each of the resources created by the template for ease of use and visibility.
-- LOCATION : This is the Azure region where the deployment will be deployed.
-- USERNAME : The username used to login to the FortiGate GUI and SSH management UI.
-- PASSWORD : The password used for the FortiGate GUI and SSH management UI.
+add deployment
 
 ### Azure Portal
 
