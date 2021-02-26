@@ -46,7 +46,31 @@ This ARM template can also be used to extend or customized based on your require
 
 ## Deployment
 
-add deployment
+The FortiADC solution can be deployed using the Azure Portal (or Azure CLI). There are 4 variables needed to complete kickstart the deployment. When you deploy the ARM template the Azure Portal will request the variables as a requirement:
+
+* RESOURCE GROUP: All resources for this template will be deployed in this group, recommend to create a new one.
+* REGION : This is the Azure region where the deployment will be deployed
+* ADMIN USERNAME : The username used to login to the FortiADC GUI and SSH mangement UI (the name: admin is not allowed).
+* ADMIN PASSWORD : The password used for the FortiGate GUI and SSH management UI.
+* FORTI ADC NAME PREFIX: This prefix will be added to each of the resources created by the templates for easy of use, manageability and visibility.
+* FORTI ADC IMAGE SKU: Select which version you want to use, BYOL means you buy license from Fortinet, PAYG, all costs go through Azure
+* FORTI ADC IMAGE VERSION: Select which version of FortiADC you want to use, latest means the latest available on Azure
+* INSTANCE TYPE: See https://docs.fortinet.com/vm for more details on what version you need to choose
+* PUBLIC IP NEW OR EXISTING: (default is new) If you want to get a new Public IP or re-use an existing one. Recommend to leave to default.
+* PUBLIC IP NAME: Name of the Public IP
+* PUBLIC IP RESOURCE GROUP: leave empty
+* PUBLIC IP ADDRESS TYPE: (default is static) type of IP address, recommended to keep static
+* VNET NEW OR EXISTING: (default is new) The VNet that will be used in this setup, choose new for a new vnet (recommended)
+* VNET NAME: (required) name of the new to create Vnet
+* VNET RESOURCE GROUP: (default empty) if left empty, resource group created above will be chosen
+* VNET ADDRESS PREFIX: Subnet prefix for the new Vnet
+* SUBNET1NAME:
+* SUBNET1PREFIX:
+* SUBNET2NAME:
+* SUBNET2PREFIX:
+* LOCATION:
+* FORTINET TAGS:
+
 
 ### Azure Portal
 
