@@ -1,0 +1,67 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "adminUsername": {
+            "value": "" // TODO: Fill in parameter value
+        },
+        "adminPassword": {
+            "value": "" // TODO: Fill in parameter value
+        },
+        "fortiADCNamePrefix": {
+            "value": "" // TODO: Fill in parameter value
+        },
+        "fortiADCImageSKU": {
+            "value": "fad-vm-byol"
+        },
+        "fortiADCImageVersion": {
+            "value": "latest"
+        },
+        "instanceType": {
+            "value": "Standard_F4s"
+        },
+        "publicIPNewOrExisting": {
+            "value": "new"
+        },
+        "publicIPName": {
+            "value": "FADClusterPublicIP"
+        },
+        "publicIPResourceGroup": {
+            "value": ""
+        },
+        "vnetNewOrExisting": {
+            "value": "new"
+        },
+        "vnetName": {
+            "value": ""
+        },
+        "vnetResourceGroup": {
+            "value": ""
+        },
+        "vnetAddressPrefix": {
+            "value": "172.16.136.0/22"
+        },
+        "subnet1Name": {
+            "value": "ExternalSubnet"
+        },
+        "subnet1Prefix": {
+            "value": "172.16.136.0/26"
+        },
+        "subnet2Name": {
+            "value": "InternalSubnet"
+        },
+        "subnet2Prefix": {
+            "value": "172.16.136.64/26"
+        },
+        "location": {
+            "value": "" // TODO: Fill in parameter value
+        },
+        "fortinetTags": {
+            "value": {
+              "publisher": "Fortinet",
+              "template": "Active-Passive-ELB-ADC",
+              "provider": "6EB3B02F-50E5-4A3E-8CB8-2E12925831AP"
+            }
+        }
+    }
+}
