@@ -54,7 +54,7 @@
             "value": "172.16.136.64/26"
         },
         "location": {
-            "value": "" // TODO: Fill in parameter value
+            "value": "[resourceGroup().location]"
         },
         "fortinetTags": {
             "value": {
