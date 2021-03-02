@@ -48,6 +48,8 @@ This ARM template can also be used to extend or customized based on your require
 
 The FortiADC solution can be deployed using the Azure Portal (or Azure CLI). There are 4 variables needed to complete kickstart the deployment. When you deploy the ARM template the Azure Portal will request the variables as a requirement:
 
+<only what is really needed>
+
 * RESOURCE GROUP: All resources for this template will be deployed in this group, recommend to create a new one.
 * REGION : This is the Azure region where the deployment will be deployed
 * ADMIN USERNAME : The username used to login to the FortiADC GUI and SSH mangement UI (the name: admin is not allowed).
