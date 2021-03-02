@@ -49,7 +49,7 @@
     "instanceType": {
       "type": "string",
       "defaultValue": "Standard_F4s",
-      "allowedValues": [ "Standard_F2s", "Standard_F8s", "Standard_F16s", "Standard_F4s", "Standard_F8", "Standard_F16", "Standard_F8s_v2", "Standard_F16s_v2", "Standard_F32s_v2", "Standard_DS3_v2", "Standard_DS4_v2", "Standard_DS5_v2", "Standard_D8s_v3", "Standard_D16s_v3", "Standard_D32s_v3"],
+      "allowedValues": [ "Standard_F2s", "Standard_F8s", "Standard_F16s", "Standard_F4s", "Standard_F8", "Standard_F16", "Standard_F8s_v2", "Standard_F16s_v2", "Standard_F32s_v2", "Standard_DS3_v2", "Standard_DS4_v2", "Standard_DS5_v2", "Standard_D8s_v3", "Standard_D16s_v3", "Standard_D32s_v3" ],
       "metadata": {
         "description": "Virtual Machine size selection - must be F4 or other instance that supports 4 NICs"
       }
@@ -216,13 +216,13 @@
       "apiVersion": "2019-10-01",
       "name": "pid-2dc4b447-552f-557f-b1cc-2faec6f9f133",
       "type": "Microsoft.Resources/deployments",
-      "properties":{
-       "mode": "Incremental",
-       "template": {
-         "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deplymentTemplate.json#",
-         "contentVersion": "1.0.0.0",
-         "resources": []
-       }
+      "properties": {
+        "mode": "Incremental",
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deplymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "resources": []
+        }
       }
     },
     {
@@ -230,7 +230,7 @@
       "name": "[variables('AvailabilitySetName')]",
       "apiVersion": "2019-07-01",
       "tags": {
-       "provider": "[toUpper(parameters('fortinetTags').provider)]"
+        "provider": "[toUpper(parameters('fortinetTags').provider)]"
       },
       "location": "[parameters('location')]",
       "properties": {
@@ -238,11 +238,11 @@
         "platformUpdateDomainCount": 2
       },
       "sku": {
-        "name":  "Aligned"
+        "name": "Aligned"
       }
     },
 
-{
+    {
       "condition": "[equals(parameters('vnetNewOrExisting'), 'new')]",
       "type": "Microsoft.Network/virtualNetworks",
       "apiVersion": "2020-04-01",
@@ -270,7 +270,7 @@
         ]
       }
     },
-{
+    {
       "apiVersion": "2020-04-01",
       "name": "[variables('nsgName')]",
       "type": "Microsoft.Network/networkSecurityGroups",
@@ -322,7 +322,7 @@
               "direction": "Inbound"
             }
           },
-          
+
           {
             "name": "AllowAllOutbound",
             "properties": {
@@ -340,7 +340,7 @@
         ]
       }
     },
-  {
+    {
       "apiVersion": "2020-04-01",
       "type": "Microsoft.Network/loadBalancers",
       "name": "[variables('externalLBName')]",
@@ -348,8 +348,7 @@
       "tags": {
         "provider": "[toUpper(parameters('fortinetTags').provider)]"
       },
-      "sku":
-      {
+      "sku": {
         "name": "Standard"
       },
       "dependsOn": [
@@ -455,7 +454,7 @@
         ]
       }
     },
-{
+    {
       "condition": "[equals(parameters('publicIPNewOrExisting'), 'new')]",
       "apiVersion": "2020-04-01",
       "type": "Microsoft.Network/publicIPAddresses",
@@ -557,7 +556,6 @@
             }
           }
         ],
-        "enableIPForwarding": true,
         "networkSecurityGroup": {
           "id": "[variables('nsgId')]"
         }
@@ -569,7 +567,7 @@
       "name": "[variables('fadaNic2Name')]",
       "location": "[parameters('location')]",
       "tags": {
-       "provider": "[toUpper(parameters('fortinetTags').provider)]"
+        "provider": "[toUpper(parameters('fortinetTags').provider)]"
       },
       "dependsOn": [
         "[variables('vnetName')]"
@@ -592,13 +590,13 @@
         "enableIPForwarding": true
       }
     },
-{
+    {
       "apiVersion": "2020-04-01",
       "type": "Microsoft.Network/networkInterfaces",
       "name": "[variables('fadbNic2Name')]",
       "location": "[parameters('location')]",
       "tags": {
-       "provider": "[toUpper(parameters('fortinetTags').provider)]"
+        "provider": "[toUpper(parameters('fortinetTags').provider)]"
       },
       "dependsOn": [
         "[variables('vnetName')]",
@@ -629,7 +627,7 @@
       "name": "[variables('fadaVmName')]",
       "location": "[parameters('location')]",
       "tags": {
-       "provider": "[toUpper(parameters('fortinetTags').provider)]"
+        "provider": "[toUpper(parameters('fortinetTags').provider)]"
       },
       "identity": {
         "type": "SystemAssigned"
@@ -697,7 +695,7 @@
       "name": "[variables('fadbVmName')]",
       "location": "[parameters('location')]",
       "tags": {
-       "provider": "[toUpper(parameters('fortinetTags').provider)]"
+        "provider": "[toUpper(parameters('fortinetTags').provider)]"
       },
       "identity": {
         "type": "SystemAssigned"
@@ -759,6 +757,6 @@
         }
       }
     }
-    
+
   ]
-  }
+}
