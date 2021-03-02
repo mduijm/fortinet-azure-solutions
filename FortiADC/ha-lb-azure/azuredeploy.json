@@ -512,7 +512,6 @@
             }
           }
         ],
-        "enableIPForwarding": true,
         "networkSecurityGroup": {
           "id": "[variables('nsgId')]"
         }
