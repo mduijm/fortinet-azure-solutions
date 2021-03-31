@@ -2,14 +2,14 @@
 echo "
 ##############################################################################################################
 #
-# Fortinet FortiGate ARM deployment template
-# Active/Active loadbalanced pair of standalone FortiGates for resilience and scale
+# Fortinet FortiADC ARM deployment template
+# Active/Passive loadbalanced pair of standalone FortiADC for resilience and scale
 #
 ##############################################################################################################
 
 "
 #echo "--> Auto accepting terms for Azure Marketplace deployments ..."
-#az vm image terms accept --publisher fortinet --offer fortinet_fortigate-vm_v5 --plan fortinet_fg-vm
+#az vm image terms accept --publisher fortinet --offer fortinet-fortiadc --plan fortinet-fad-vm_payg-100mbps
 
 # Stop on error
 set +e
