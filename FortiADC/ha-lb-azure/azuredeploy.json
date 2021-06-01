@@ -209,7 +209,8 @@
     "externalLBBEName": "[concat(parameters('fortiADCNamePrefix'),'-ELB-',parameters('subnet1Name'),'-BackEnd')]",
     "externalLBBEId": "[resourceId('Microsoft.Network/loadBalancers/backendAddressPools',variables('externalLBName'),variables('externalLBBEName'))]",
     "externalLBProbeName": "lbprobe",
-    "externalLBProbeId": "[resourceId('Microsoft.Network/loadBalancers/probes',variables('externalLBName'),variables('externalLBProbeName'))]"
+    "externalLBProbeId": "[resourceId('Microsoft.Network/loadBalancers/probes',variables('externalLBName'),variables('externalLBProbeName'))]",
+    "fadCustomData": "[base64(concat('config system time manual\nset zone 28\nend\nconfig system time ntp\nset ntpsync enable\nend'))]"
   },
   "resources": [
     {
@@ -651,7 +652,8 @@
         "osProfile": {
           "computerName": "[variables('fadaVmName')]",
           "adminUsername": "[parameters('adminUsername')]",
-          "adminPassword": "[parameters('adminPassword')]"
+          "adminPassword": "[parameters('adminPassword')]",
+          "customData": "[variables('fadCustomData')]"
         },
         "storageProfile": {
           "imageReference": {
