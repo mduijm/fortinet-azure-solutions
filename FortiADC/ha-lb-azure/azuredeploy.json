@@ -721,7 +721,8 @@
         "osProfile": {
           "computerName": "[variables('fadbVmName')]",
           "adminUsername": "[parameters('adminUsername')]",
-          "adminPassword": "[parameters('adminPassword')]"
+          "adminPassword": "[parameters('adminPassword')]",
+          "customData": "[variables('fadCustomData')]"
         },
         "storageProfile": {
           "imageReference": {
